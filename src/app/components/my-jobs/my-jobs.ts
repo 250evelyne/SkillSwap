@@ -53,4 +53,8 @@ export class MyJobs implements OnInit {
   viewJob(jobId: string) {
     this.router.navigate(['/jobs', jobId]);
   }
+
+  createNewJob() {
+    this.router.navigate(['/jobs/create']);
+  }
 }
