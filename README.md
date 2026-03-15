@@ -84,8 +84,8 @@ This is a school project showing I can:
 
 **Name:** Evelyne  
 **School:** LaSalle College Montreal  
-**Program:** Computer Science  
-**Project:** Angular Midterm
+**Program:** Computer Science- programming
+**Project:** Angular project Midterm
 
 ## Links
 
