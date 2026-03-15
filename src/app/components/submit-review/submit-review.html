@@ -1,0 +1,93 @@
+<div class="submit-review-container">
+  
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1 class="logo">✨ SkillSwap</h1>
+      
+      <div class="nav-links">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/jobs">Browse Jobs</a>
+        <a routerLink="/my-jobs">My Jobs</a>
+        <a routerLink="/my-proposals">My Proposals</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading">
+      <p>Loading job details...</p>
+    </div>
+
+    <!-- Review Form -->
+    <div *ngIf="!loading && job" class="review-card">
+      
+      <div class="review-header">
+        <h1>⭐ Leave a Review</h1>
+        <p>Share your experience working on this job</p>
+      </div>
+
+      <!-- Job Info -->
+      <div class="job-info">
+        <h3>{{job.title}}</h3>
+        <p>Category: {{job.category}} | Budget: ${{job.budget}}</p>
+      </div>
+
+      <!-- Reviewing Info -->
+      <div class="reviewing-info">
+        <p>You are reviewing: <strong>{{targetUser?.name}}</strong></p>
+      </div>
+
+      <!-- Rating -->
+      <div class="rating-section">
+        <label>Rating *</label>
+        <div class="stars">
+          <span 
+            *ngFor="let star of stars"
+            class="star"
+            [class.selected]="star <= reviewForm.rating"
+            (click)="setRating(star)"
+          >
+            {{star <= reviewForm.rating ? '⭐' : '☆'}}
+          </span>
+        </div>
+        <p class="rating-text">{{reviewForm.rating}} out of 5 stars</p>
+      </div>
+
+      <!-- Comment -->
+      <div class="form-group">
+        <label>Your Review *</label>
+        <textarea 
+          [(ngModel)]="reviewForm.comment"
+          rows="6"
+          placeholder="Share details about your experience working with this person. What did they do well? What could be improved?"
+          [disabled]="submitting"
+        ></textarea>
+        <small>Be honest and constructive. Your review helps others make informed decisions.</small>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button 
+          class="btn btn-primary"
+          (click)="submitReview()"
+          [disabled]="submitting"
+        >
+          {{submitting ? 'Submitting...' : '✅ Submit Review'}}
+        </button>
+        
+        <button 
+          class="btn btn-secondary"
+          (click)="cancel()"
+          [disabled]="submitting"
+        >
+          Cancel
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

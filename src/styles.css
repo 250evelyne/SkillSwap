@@ -1,1 +1,113 @@
-/* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-pink: #FFB6C1;
+  --primary-blue: #B0E0E6;
+  --accent-pink: #FFC0CB;
+  --accent-blue: #ADD8E6;
+  --dark-text: #333;
+  --light-bg: #FFF5F7;
+  --white: #FFFFFF;
+  --error: #FF6B6B;
+  --success: #51CF66;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-pink) 100%);
+  min-height: 100vh;
+  color: var(--dark-text);
+}
+
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--primary-pink);
+  color: white;
+
+  &:hover {
+    background: #FF99AC;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.btn-secondary {
+  background: var(--primary-blue);
+  color: white;
+
+  &:hover {
+    background: #9AD1DB;
+    transform: translateY(-2px);
+  }
+}
+
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--accent-blue);
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+  }
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--dark-text);
+  margin-bottom: 8px;
+}
+
+
+.error {
+  color: var(--error);
+  background: #FFE0E0;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border-left: 4px solid var(--error);
+}
+
+.success {
+  color: var(--success);
+  background: #E0FFE0;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border-left: 4px solid var(--success);
+}
+
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

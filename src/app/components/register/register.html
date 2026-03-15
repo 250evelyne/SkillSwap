@@ -1,0 +1,88 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="header">
+      <h1>✨ Create Account</h1>
+      <p>Join SkillSwap Platform</p>
+    </div>
+
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+    <form (ngSubmit)="submit()" class="register-form">
+      
+      <label>
+        Name *
+        <input 
+          [(ngModel)]="form.name" 
+          name="name" 
+          type="text" 
+          placeholder="Your full name"
+          [disabled]="submitting"
+        />
+      </label>
+
+      <label>
+        Username *
+        <input 
+          [(ngModel)]="form.username" 
+          name="username" 
+          type="text" 
+          placeholder="Choose a unique username"
+          [disabled]="submitting"
+        />
+      </label>
+
+      <label>
+        Email *
+        <input 
+          [(ngModel)]="form.email" 
+          name="email" 
+          type="email" 
+          placeholder="your@email.com"
+          [disabled]="submitting"
+        />
+      </label>
+
+      <label>
+        Password *
+        <input 
+          [(ngModel)]="form.password" 
+          name="password" 
+          type="password" 
+          placeholder="Create a strong password"
+          [disabled]="submitting"
+        />
+      </label>
+
+      <label>
+        Bio *
+        <textarea 
+          [(ngModel)]="form.bio" 
+          name="bio" 
+          rows="3"
+          placeholder="Tell us about yourself..."
+          [disabled]="submitting"
+        ></textarea>
+      </label>
+
+      <label>
+        Skills *
+        <input 
+          [(ngModel)]="form.skills" 
+          name="skills" 
+          type="text" 
+          placeholder="e.g., Angular, Design, Writing (comma-separated)"
+          [disabled]="submitting"
+        />
+      </label>
+
+      <button type="submit" class="btn btn-primary" [disabled]="submitting">
+        {{submitting ? 'Creating Account...' : 'Sign Up'}}
+      </button>
+
+      <p class="login-link">
+        Already have an account? <a routerLink="/login">Login here</a>
+      </p>
+
+    </form>
+  </div>
+</div>

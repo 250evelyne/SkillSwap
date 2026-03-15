@@ -1,0 +1,101 @@
+<div class="create-job-container">
+  
+
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1 class="logo">✨ SkillSwap</h1>
+      
+      <div class="nav-links">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/jobs">Browse Jobs</a>
+        <a routerLink="/my-jobs">My Jobs</a>
+        <a routerLink="/my-proposals">My Proposals</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    
+
+    <div class="page-header">
+      <h1>➕ Post a New Job</h1>
+    </div>
+
+    <div class="form-card">
+      
+      <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+      <form (ngSubmit)="submit()" class="job-form">
+        
+        <div class="form-group">
+          <label>Job Title *</label>
+          <input 
+            type="text" 
+            [(ngModel)]="form.title"
+            name="title"
+            placeholder="e.g., Build a responsive website"
+            [disabled]="submitting"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Category *</label>
+          <select 
+            [(ngModel)]="form.category"
+            name="category"
+            [disabled]="submitting"
+          >
+            <option value="">Select a category</option>
+            <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Budget ($) *</label>
+          <input 
+            type="number" 
+            [(ngModel)]="form.budget"
+            name="budget"
+            placeholder="e.g., 500"
+            [disabled]="submitting"
+          />
+          <small>Enter the total budget for this job</small>
+        </div>
+
+        <div class="form-group">
+          <label>Job Description *</label>
+          <textarea 
+            [(ngModel)]="form.description"
+            name="description"
+            rows="8"
+            placeholder="Describe the job in detail. Include requirements, deliverables, timeline, etc."
+            [disabled]="submitting"
+          ></textarea>
+          <small>Be clear and detailed to attract the right freelancers</small>
+        </div>
+
+        <div class="form-actions">
+          <button 
+            type="submit" 
+            class="btn btn-primary"
+            [disabled]="submitting"
+          >
+            {{submitting ? 'Posting...' : ' Post Job'}}
+          </button>
+          
+          <button 
+            type="button"
+            class="btn btn-secondary"
+            (click)="cancel()"
+            [disabled]="submitting"
+          >
+            Cancel
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>

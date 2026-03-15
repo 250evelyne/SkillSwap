@@ -1,0 +1,107 @@
+<div class="my-proposals-container">
+  
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1 class="logo">✨ SkillSwap</h1>
+      
+      <div class="nav-links">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/jobs">Browse Jobs</a>
+        <a routerLink="/my-jobs">My Jobs</a>
+        <a routerLink="/my-proposals" routerLinkActive="active">My Proposals</a>
+        <a routerLink="/profile/{{currentUser?.id}}" *ngIf="currentUser">Profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    
+    <div class="page-header">
+      <h1>✍️ My Proposals</h1>
+      <a routerLink="/jobs" class="btn btn-primary">Browse Jobs</a>
+    </div>
+
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+    <div *ngIf="loading" class="loading">
+      <p>Loading your proposals...</p>
+    </div>
+
+    <div *ngIf="!loading" class="proposals-section">
+      
+      <div *ngIf="proposals.length === 0" class="no-proposals">
+        <p>📭 You haven't submitted any proposals yet.</p>
+        <a routerLink="/jobs" class="btn btn-primary">Browse Jobs & Submit Proposals</a>
+      </div>
+
+      <div *ngIf="proposals.length > 0" class="proposals-list">
+        
+        <div *ngFor="let proposal of proposals" class="proposal-card">
+          
+          <div class="proposal-header">
+            <div>
+              <h3>{{proposal.job?.title || 'Job Title'}}</h3>
+              <p class="proposal-job-info">
+                Category: {{proposal.job?.category || 'N/A'}} | 
+                Budget: ${{proposal.job?.budget || 'N/A'}}
+              </p>
+            </div>
+            <span class="proposal-status" [ngClass]="proposal.status">
+              {{proposal.status}}
+            </span>
+          </div>
+
+          <div class="proposal-body">
+            <div class="proposal-detail">
+              <strong>Your Bid:</strong> 
+              <span class="proposal-price">💰 ${{proposal.price}}</span>
+            </div>
+
+            <div class="proposal-detail">
+              <strong>Cover Letter:</strong>
+              <p>{{proposal.cover_letter || proposal.message || 'No cover letter provided'}}</p>
+            </div>
+
+            <div class="proposal-meta">
+              <span>Submitted: {{proposal.created_at ? (proposal.created_at | date:'short') : 'N/A'}}</span>
+            </div>
+          </div>
+
+          <div class="proposal-actions">
+            <button 
+              class="btn btn-secondary"
+              (click)="viewJob(proposal.job_id || proposal.job?.id)"
+              *ngIf="proposal.job_id || proposal.job?.id"
+            >
+              View Job Details
+            </button>
+
+            <button 
+              class="btn btn-danger"
+              (click)="withdrawProposal(proposal.id)"
+              *ngIf="proposal.status === 'pending'"
+            >
+              Withdraw Proposal
+            </button>
+
+            <button 
+              class="btn btn-primary"
+              (click)="leaveReview(proposal.job_id || proposal.job?.id)"
+              *ngIf="proposal.status === 'accepted'"
+            >
+              ⭐ Leave a Review
+            </button>
+
+            <span *ngIf="proposal.status === 'rejected'" class="rejected-badge">
+              ❌ This proposal was not accepted
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

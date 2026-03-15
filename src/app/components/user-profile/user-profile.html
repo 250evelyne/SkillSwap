@@ -1,0 +1,112 @@
+<div class="user-profile-container">
+  
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1 class="logo">✨ SkillSwap</h1>
+      
+      <div class="nav-links">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/jobs">Browse Jobs</a>
+        <a routerLink="/my-jobs">My Jobs</a>
+        <a routerLink="/my-proposals">My Proposals</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    
+    <button class="btn-back" (click)="goBack()">← Back</button>
+
+    <div *ngIf="loading" class="loading">
+      <p>Loading profile...</p>
+    </div>
+
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+    <div *ngIf="!loading && user" class="profile-content">
+      
+      <div class="profile-header">
+        <div class="user-avatar">
+          <span class="avatar-icon">👤</span>
+        </div>
+        <div class="user-info">
+          <h1>{{user.name}}</h1>
+          <p class="username">@{{user.username}}</p>
+          
+          <div class="rating-section" *ngIf="reviews.length > 0">
+            <div class="stars">
+              <span *ngFor="let star of getStars(getAverageRating())">{{star}}</span>
+            </div>
+            <span class="rating-text">{{getAverageRating()}} ({{reviews.length}} reviews)</span>
+          </div>
+          
+          <div class="rating-section" *ngIf="reviews.length === 0">
+            <p class="no-reviews">No reviews yet</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        
+        <div class="detail-card">
+          <h3>About</h3>
+          <p class="bio">{{user.bio || 'No bio provided'}}</p>
+        </div>
+
+        <div class="detail-card" *ngIf="user.skills && user.skills.length > 0">
+          <h3>Skills</h3>
+          <div class="skills-list">
+            <span *ngFor="let skill of user.skills" class="skill-tag">{{skill}}</span>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <h3>Stats</h3>
+          <div class="stats-grid">
+            <div class="stat">
+              <span class="stat-value">{{user.completed_jobs || 0}}</span>
+              <span class="stat-label">Completed Jobs</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">{{getAverageRating()}}</span>
+              <span class="stat-label">Average Rating</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">{{reviews.length}}</span>
+              <span class="stat-label">Total Reviews</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reviews-section" *ngIf="reviews.length > 0">
+        <h2>Reviews ({{reviews.length}})</h2>
+        
+        <div class="reviews-list">
+          <div *ngFor="let review of reviews" class="review-card">
+            <div class="review-header">
+              <div>
+                <strong>{{review.reviewer?.name || 'Anonymous'}}</strong>
+                <div class="review-stars">
+                  <span *ngFor="let star of getStars(review.rating)">{{star}}</span>
+                </div>
+              </div>
+              <span class="review-date">{{review.created_at | date:'short'}}</span>
+            </div>
+            <p class="review-comment">{{review.comment}}</p>
+            <p class="review-job" *ngIf="review.job">
+              Job: {{review.job?.title || 'Unknown'}}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-reviews-section" *ngIf="reviews.length === 0">
+        <p>This user hasn't received any reviews yet.</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>

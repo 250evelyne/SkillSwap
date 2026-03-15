@@ -1,0 +1,172 @@
+.dashboard-container {
+  min-height: 100vh;
+  background: var(--light-bg);
+}
+
+.navbar {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-pink);
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+
+  a {
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s;
+
+    &:hover {
+      background: var(--accent-pink);
+      color: white;
+    }
+
+    &.active {
+      background: var(--primary-pink);
+      color: white;
+    }
+  }
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h2 {
+    font-size: 32px;
+    color: var(--primary-pink);
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 18px;
+    color: #666;
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.stat-icon {
+  font-size: 48px;
+}
+
+.stat-info {
+  h3 {
+    font-size: 28px;
+    color: var(--primary-pink);
+    margin: 0 0 4px 0;
+  }
+
+  p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+.actions-section {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-size: 24px;
+    color: var(--dark-text);
+    margin: 0 0 24px 0;
+  }
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-pink));
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  .icon {
+    font-size: 32px;
+  }
+
+  span:last-child {
+    font-weight: 600;
+    font-size: 16px;
+  }
+}

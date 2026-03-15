@@ -1,0 +1,462 @@
+.job-details-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #B0E0E6 0%, #FFB6C1 100%);
+}
+
+.navbar {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFB6C1;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #FFB6C1;
+    }
+
+    &.active {
+      color: #FFB6C1;
+      border-bottom: 2px solid #FFB6C1;
+    }
+  }
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.btn-back {
+  background: white;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s;
+
+  &:hover {
+    background: #f8f9fa;
+    transform: translateX(-5px);
+  }
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 3rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.job-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.job-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 2rem;
+
+  h1 {
+    color: #333;
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+  }
+}
+
+.job-status {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+
+  &.open {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  &.in_progress {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  &.completed {
+    background: #d1ecf1;
+    color: #0c5460;
+  }
+}
+
+.job-budget-large {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFB6C1;
+  white-space: nowrap;
+}
+
+.job-meta {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+
+  span {
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+.job-description {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #666;
+    line-height: 1.6;
+  }
+}
+
+.job-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: #FFB6C1;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #FF99AC;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-secondary {
+  background: #B0E0E6;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #9AD0DC;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #218838;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #c82333;
+    transform: translateY(-2px);
+  }
+}
+
+.owner-badge, .applied-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.owner-badge {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.applied-badge {
+  background: #d4edda;
+  color: #155724;
+}
+
+.proposal-form {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+
+  h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+
+    &:focus {
+      outline: none;
+      border-color: #FFB6C1;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    font-family: inherit;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ===== PROPOSALS SECTION ===== */
+
+.proposals-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+}
+
+.api-limitation-note {
+  background: #e7f3ff;
+  border-left: 4px solid #2196F3;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-size: 13px;
+  color: #0d47a1;
+  line-height: 1.5;
+}
+
+.no-proposals {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+}
+
+.proposals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.proposal-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: #FFB6C1;
+    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+.proposal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.freelancer-info {
+  flex: 1;
+
+  h3 {
+    color: #333;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+  }
+
+  .freelancer-id {
+    font-size: 11px;
+    color: #adb5bd;
+    font-family: 'Courier New', monospace;
+    margin: 0.3rem 0;
+    background: #f1f3f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .proposal-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FFB6C1;
+    margin: 0.5rem 0 0 0;
+  }
+}
+
+.proposal-status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.pending {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  &.accepted {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  &.rejected {
+    background: #f8d7da;
+    color: #721c24;
+  }
+}
+
+.proposal-body {
+  margin-bottom: 1.5rem;
+
+  strong {
+    color: #495057;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .cover-letter {
+    color: #666;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #FFB6C1;
+    margin: 0;
+  }
+}
+
+.proposal-actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.freelancer-stats {
+  display: flex;
+  gap: 16px;
+  margin: 8px 0;
+  font-size: 14px;
+
+  .rating {
+    color: #FFB6C1;
+    font-weight: 600;
+  }
+
+  .jobs-completed {
+    color: #666;
+    font-weight: 500;
+  }
+}
+
+.freelancer-name {
+  cursor: pointer;
+  color: #FFB6C1;
+  transition: all 0.3s;
+  margin: 0 0 8px 0;
+
+  &:hover {
+    color: #FF99AC;
+    text-decoration: underline;
+    transform: translateX(4px);
+  }
+}

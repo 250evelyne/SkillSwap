@@ -1,0 +1,75 @@
+<div class="dashboard-container">
+  
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1 class="logo">✨ SkillSwap</h1>
+      
+      <div class="nav-links">
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/jobs">Browse Jobs</a>
+        <a routerLink="/my-jobs">My Jobs</a>
+        <a routerLink="/my-proposals">My Proposals</a>
+        <a [routerLink]="['/profile', currentUser?.id]" *ngIf="currentUser">Profile</a>
+        <button class="btn-logout" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    
+    <div class="welcome-section">
+      <h1>Welcome back, {{currentUser?.name}}!</h1>
+      <p>Ready to find your next project or amazing talent?</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-value">{{stats.total_users}}</div>
+        <div class="stat-label">Total Users</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">💼</div>
+        <div class="stat-value">{{stats.active_jobs}}</div>
+        <div class="stat-label">Active Jobs</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-value">${{formatValue(stats.total_value_moved)}}</div>
+        <div class="stat-label">Total Value Moved</div>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="actions-grid">
+        <a routerLink="/jobs" class="action-card">
+          <div class="action-icon">🔍</div>
+          <h3>Browse Jobs</h3>
+          <p>Find opportunities that match your skills</p>
+        </a>
+
+        <a routerLink="/jobs/create" class="action-card">
+          <div class="action-icon">✏️</div>
+          <h3>Post a Job</h3>
+          <p>Get your project done by talented freelancers</p>
+        </a>
+
+        <a routerLink="/my-jobs" class="action-card">
+          <div class="action-icon">📋</div>
+          <h3>My Posted Jobs</h3>
+          <p>Manage jobs you've created</p>
+        </a>
+
+        <a routerLink="/my-proposals" class="action-card">
+          <div class="action-icon">📝</div>
+          <h3>My Proposals</h3>
+          <p>Track your submitted bids</p>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

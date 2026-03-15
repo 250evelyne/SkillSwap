@@ -1,0 +1,44 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="header">
+      <h1> Welcome Back</h1>
+      <p>Login to SkillSwap Platform</p>
+    </div>
+
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+    <form (ngSubmit)="submit()" class="login-form">
+      
+      <label>
+        Email *
+        <input 
+          [(ngModel)]="form.email" 
+          name="email" 
+          type="email" 
+          placeholder="your@email.com"
+          [disabled]="submitting"
+        />
+      </label>
+
+      <label>
+        Password *
+        <input 
+          [(ngModel)]="form.password" 
+          name="password" 
+          type="password" 
+          placeholder="Enter your password"
+          [disabled]="submitting"
+        />
+      </label>
+
+      <button type="submit" class="btn btn-primary" [disabled]="submitting">
+        {{submitting ? 'Logging in...' : 'Login'}}
+      </button>
+
+      <p class="register-link">
+        Don't have an account? <a routerLink="/register">Sign up here</a>
+      </p>
+
+    </form>
+  </div>
+</div>

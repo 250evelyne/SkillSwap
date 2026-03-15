@@ -1,0 +1,168 @@
+<div class="job-details-container">
+  
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1 class="logo">✨ SkillSwap</h1>
+      
+      <div class="nav-links">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/jobs">Browse Jobs</a>
+        <a routerLink="/my-jobs">My Jobs</a>
+        <a routerLink="/my-proposals">My Proposals</a>
+        <a routerLink="/profile/{{currentUser?.id}}" *ngIf="currentUser">Profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    
+    <button class="btn-back" (click)="goBack()">← Back to Jobs</button>
+
+    <div *ngIf="loading" class="loading">
+      <p>Loading job details...</p>
+    </div>
+
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+    <div *ngIf="!loading && job" class="job-content">
+      
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <h1>{{job.title}}</h1>
+            <span class="job-status" [ngClass]="job.status">{{job.status}}</span>
+          </div>
+          
+          <div class="job-budget-large">
+            💰 ${{job.budget}}
+          </div>
+        </div>
+
+        <div class="job-meta">
+          <span>📂 {{job.category}}</span>
+          <span>👤 Posted by: {{job.owner?.name}}</span>
+          <span *ngIf="job.freelancer">🔨 Freelancer: {{job.freelancer?.name}}</span>
+        </div>
+
+        <div class="job-description">
+          <h3>Description</h3>
+          <p>{{job.description}}</p>
+        </div>
+
+        <div class="job-actions">
+          
+          <button 
+            *ngIf="job.status === 'completed' && (isOwner() || currentUser?.id === job.freelancer?.id)"
+            class="btn btn-primary"
+            (click)="navigateToReview()"
+          >
+            Leave a Review
+          </button>
+          
+          <button 
+            *ngIf="canSubmitProposal()" 
+            class="btn btn-primary"
+            (click)="showProposalForm = !showProposalForm"
+          >
+            ✍️ Submit Proposal
+          </button>
+
+          <button 
+            *ngIf="job.status === 'in_progress' && (isOwner() || currentUser?.id === job.freelancer?.id)"
+            class="btn btn-success"
+            (click)="completeJob()"
+          >
+            Mark as Completed
+          </button>
+
+          <span *ngIf="isOwner()" class="owner-badge">👑 You own this job</span>
+          
+          <span *ngIf="hasApplied && !isOwner()" class="applied-badge">
+             You already submitted a proposal for this job
+          </span>
+        </div>
+
+        <div *ngIf="showProposalForm" class="proposal-form">
+          <h3>Submit Your Proposal</h3>
+          
+          <div class="form-group">
+            <label>Your Price ($) *</label>
+            <input 
+              type="number" 
+              [(ngModel)]="proposalForm.price"
+              placeholder="e.g., 500"
+              [disabled]="submittingProposal"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Cover Letter *</label>
+            <textarea 
+              [(ngModel)]="proposalForm.cover_letter"
+              rows="5"
+              placeholder="Explain why you're the best fit for this job..."
+              [disabled]="submittingProposal"
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button 
+              class="btn btn-primary"
+              (click)="submitProposal()"
+              [disabled]="submittingProposal"
+            >
+              {{submittingProposal ? 'Submitting...' : 'Submit Proposal'}}
+            </button>
+            <button 
+              class="btn btn-secondary"
+              (click)="showProposalForm = false"
+              [disabled]="submittingProposal"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isOwner() && job.status === 'open'" class="proposals-section">
+        <h2>Proposals ({{proposals.length}})</h2>
+        
+      
+        
+        <div *ngIf="proposals.length === 0" class="no-proposals">
+          <p>No proposals yet. Share your job to get more applicants!</p>
+        </div>
+
+        <div class="proposals-list">
+          <div *ngFor="let proposal of proposals" class="proposal-card">
+            
+            <div class="proposal-header">
+              <div class="freelancer-info">
+                <h3>Freelancer Application</h3>
+                <p class="freelancer-id">ID: {{proposal.freelancer_id}}</p>
+                <p class="proposal-price">💰 ${{proposal.price}}</p>
+              </div>
+              <span class="proposal-status" [ngClass]="proposal.status">{{proposal.status}}</span>
+            </div>
+
+            <div class="proposal-body">
+              <p><strong>Cover Letter:</strong></p>
+              <p class="cover-letter">{{proposal.cover_letter || proposal.message || 'No cover letter provided'}}</p>
+            </div>
+
+            <div class="proposal-actions" *ngIf="proposal.status === 'pending'">
+              <button 
+                class="btn btn-primary"
+                (click)="acceptProposal(proposal.id)"
+              >
+                 Accept Proposal
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

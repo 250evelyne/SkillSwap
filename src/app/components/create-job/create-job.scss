@@ -1,0 +1,170 @@
+.create-job-container {
+  min-height: 100vh;
+  background: #FFF5F7;
+}
+
+.navbar {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FFB6C1;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s;
+
+    &:hover {
+      background: #FFC0CB;
+      color: white;
+    }
+  }
+}
+
+.main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 32px;
+    color: #FFB6C1;
+    margin: 0;
+  }
+}
+
+.form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-weight: 600;
+    color: #333;
+    font-size: 16px;
+  }
+
+  input, select, textarea {
+    padding: 12px;
+    border: 2px solid #ADD8E6;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: #FFB6C1;
+    }
+
+    &:disabled {
+      background: #f5f5f5;
+      cursor: not-allowed;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  small {
+    color: #666;
+    font-size: 13px;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.btn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: #FFB6C1;
+  color: white;
+  flex: 1;
+
+  &:hover:not(:disabled) {
+    background: #FF99AC;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.btn-secondary {
+  background: #B0E0E6;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #9AD1DB;
+  }
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  background: #FFE0E0;
+  color: #D8000C;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #D8000C;
+}

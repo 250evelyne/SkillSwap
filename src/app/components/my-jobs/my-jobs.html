@@ -1,0 +1,68 @@
+<div class="my-jobs-container">
+  
+ 
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1 class="logo">✨ SkillSwap</h1>
+      
+      <div class="nav-links">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/jobs">Browse Jobs</a>
+        <a routerLink="/my-jobs" routerLinkActive="active">My Jobs</a>
+        <a routerLink="/my-proposals">My Proposals</a>
+        <a routerLink="/profile/{{currentUser?.id}}" *ngIf="currentUser">Profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    
+  
+    <div class="page-header">
+      <h1>📋 My Posted Jobs</h1>
+      <button class="btn btn-primary" (click)="createNewJob()">+ Post New Job</button>
+    </div>
+
+ 
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+
+    <div *ngIf="loading" class="loading">
+      <p>Loading your jobs...</p>
+    </div>
+
+  
+    <div *ngIf="!loading" class="jobs-grid">
+      
+      <div *ngIf="jobs.length === 0" class="no-jobs">
+        <p>📭 You haven't posted any jobs yet.</p>
+        <button class="btn btn-primary" (click)="createNewJob()">Post Your First Job</button>
+      </div>
+
+      <div *ngFor="let job of jobs" class="job-card" (click)="viewJob(job.id)">
+        <div class="job-header">
+          <h3>{{job.title}}</h3>
+          <span class="job-status" [ngClass]="job.status">{{job.status}}</span>
+        </div>
+        
+        <p class="job-description">{{job.description}}</p>
+        
+        <div class="job-details">
+          <span class="job-category">📂 {{job.category}}</span>
+          <span class="job-budget">💰 ${{job.budget}}</span>
+        </div>
+
+        <div class="job-footer">
+          <span class="job-info">
+            <span *ngIf="job.status === 'open'">📬 Accepting proposals</span>
+            <span *ngIf="job.status === 'in_progress'">🔨 In progress</span>
+            <span *ngIf="job.status === 'completed'"> Completed</span>
+          </span>
+          <span class="job-action">Click to view details →</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

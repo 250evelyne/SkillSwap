@@ -1,0 +1,102 @@
+<div class="jobs-container">
+  
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1 class="logo">✨ SkillSwap</h1>
+      
+      <div class="nav-links">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/jobs" routerLinkActive="active">Browse Jobs</a>
+        <a routerLink="/my-jobs">My Jobs</a>
+        <a routerLink="/my-proposals">My Proposals</a>
+        <a routerLink="/profile/{{currentUser?.id}}" *ngIf="currentUser">Profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    
+    <!-- Header -->
+    <div class="page-header">
+      <h1>🔍 Browse Jobs</h1>
+      <a routerLink="/jobs/create" class="btn btn-primary">+ Post a Job</a>
+    </div>
+
+    <!-- Search Filters -->
+    <div class="filters-section">
+      <h3>Filter Jobs</h3>
+      
+      <div class="filters-grid">
+        <div class="filter-group">
+          <label>Category</label>
+          <select [(ngModel)]="filters.category" (change)="searchJobs()">
+            <option value="">All Categories</option>
+            <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Status</label>
+          <select [(ngModel)]="filters.status" (change)="searchJobs()">
+            <option value="open">Open</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Min Budget ($)</label>
+          <input 
+            type="number" 
+            [(ngModel)]="filters.min_budget"
+            placeholder="e.g., 100"
+            (keyup.enter)="searchJobs()"
+          />
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn btn-primary" (click)="searchJobs()">Search</button>
+          <button class="btn btn-secondary" (click)="resetFilters()">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading">
+      <p>Loading jobs...</p>
+    </div>
+
+    <!-- Jobs List -->
+    <div *ngIf="!loading" class="jobs-grid">
+      
+      <div *ngIf="jobs.length === 0" class="no-jobs">
+        <p>😔 No jobs found matching your criteria.</p>
+        <button class="btn btn-secondary" (click)="resetFilters()">Clear Filters</button>
+      </div>
+
+      <div *ngFor="let job of jobs" class="job-card" (click)="viewJob(job.id)">
+        <div class="job-header">
+          <h3>{{job.title}}</h3>
+          <span class="job-status" [ngClass]="job.status">{{job.status}}</span>
+        </div>
+        
+        <p class="job-description">{{job.description}}</p>
+        
+        <div class="job-details">
+          <span class="job-category">📂 {{job.category}}</span>
+          <span class="job-budget">💰 ${{job.budget}}</span>
+        </div>
+
+        <div class="job-footer">
+          <span class="job-owner">Posted by: {{job.owner?.name || 'Unknown'}}</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

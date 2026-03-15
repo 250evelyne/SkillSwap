@@ -1,0 +1,263 @@
+.my-proposals-container {
+  min-height: 100vh;
+  background: #FFF5F7;
+}
+
+.navbar {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FFB6C1;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s;
+
+    &:hover {
+      background: #FFC0CB;
+      color: white;
+    }
+
+    &.active {
+      background: #FFB6C1;
+      color: white;
+    }
+  }
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 32px;
+    color: #FFB6C1;
+    margin: 0;
+  }
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: #FFB6C1;
+  color: white;
+
+  &:hover {
+    background: #FF99AC;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-secondary {
+  background: #B0E0E6;
+  color: white;
+
+  &:hover {
+    background: #9AD1DB;
+  }
+}
+
+.btn-danger {
+  background: #FF6B6B;
+  color: white;
+
+  &:hover {
+    background: #EE5A5A;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 18px;
+}
+
+.error {
+  background: #FFE0E0;
+  color: #D8000C;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #D8000C;
+}
+
+.no-proposals {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+
+  p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+}
+
+.proposals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.proposal-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.proposal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+
+  h3 {
+    margin: 0 0 8px 0;
+    color: #333;
+    font-size: 20px;
+  }
+
+  .proposal-job-info {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+.proposal-status {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+
+  &.pending {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  &.accepted {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  &.rejected {
+    background: #f8d7da;
+    color: #721c24;
+  }
+}
+
+.proposal-body {
+  margin-bottom: 20px;
+}
+
+.proposal-detail {
+  margin-bottom: 16px;
+
+  strong {
+    color: #333;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.proposal-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FFB6C1;
+}
+
+.proposal-meta {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+
+  span {
+    color: #999;
+    font-size: 13px;
+  }
+}
+
+.proposal-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.success-badge {
+  background: #d4edda;
+  color: #155724;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.rejected-badge {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
