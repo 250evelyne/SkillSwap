@@ -1,59 +1,96 @@
-# SkillswapPlatform
+# SkillSwap - Freelance Marketplace
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+A platform where people can hire freelancers and freelancers can find work.
 
-## Development server
+## What Does It Do?
 
-To start a local development server, run:
+**For Clients:**
+- Post jobs you need done
+- See proposals from freelancers
+- Choose who you want to hire
+- Leave reviews when the work is done
 
+**For Freelancers:**
+- Browse available jobs
+- Submit proposals with your price
+- Get hired and complete work
+- Leave reviews for clients
+
+## How It Works
+
+1. Someone posts a job (example: "I need a website built")
+2. Freelancers apply by sending proposals with their price
+3. The client picks their favorite freelancer
+4. They work together to complete the job
+5. Both people leave reviews for each other
+
+## Features
+
+- **Sign up and login** - Create your account
+- **Browse jobs** - See what's available
+- **Post jobs** - Need something done? Post it!
+- **Submit proposals** - Apply to jobs you want
+- **Review system** - Rate people after working together
+- **User profiles** - See reviews and ratings
+
+## Colors & Design
+
+Baby blue and pink theme - clean, modern, and easy to use.
+
+## Tech Stuff (for teachers)
+
+- Built with Angular 21
+- Uses a real API (not fake data)
+- Secure login with tokens
+- Works on mobile and desktop
+- All errors are handled nicely
+
+## How to Run It
 ```bash
+# Install
+npm install
+
+# Run
 ng serve
+
+# Open your browser
+http://localhost:4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Demo Flow
 
-## Code scaffolding
+**Watch these steps work together:**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Alice creates an account
+2. Alice posts: "Need AI model help - $2000"
+3. Bob creates an account
+4. Bob applies: "I can do it for $1800"
+5. Alice sees Bob's proposal and accepts it
+6. Job status shows "in progress"
+7. Alice marks the job as complete
+8. Both Alice and Bob leave 5-star reviews
+9. Reviews show up on their profiles
 
-```bash
-ng generate component component-name
-```
+## Why This Project?
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+This is a school project showing I can:
+- Build a complete web application
+- Connect to real APIs
+- Handle user accounts securely
+- Create a smooth user experience
+- Make everything work together
 
-```bash
-ng generate --help
-```
+## Student Info
 
-## Building
+**Name:** Evelyne  
+**School:** LaSalle College Montreal  
+**Program:** Computer Science  
+**Project:** Angular Midterm
 
-To build the project run:
+## Links
 
-```bash
-ng build
-```
+**Code:** https://github.com/250evelyne/SkillSwap.git
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Made with 💙💗 by Evelyne
