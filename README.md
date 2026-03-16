@@ -91,6 +91,13 @@ This is a school project showing I can:
 
 **Code:** https://github.com/250evelyne/SkillSwap.git
 
+## Want to watch it in action
+**Watch the complete demo:** [clickhere to watch](https://drive.google.com/file/d/1SSKvPK4MVADibYhzi5zQmlP-Y-cwvFsV/view?usp=sharing)
+
+The video demonstrates :
+-Complete business flow(register, login,post job, submit proposal,accept proposal, complete proposal, review)
+-all features working live
+
 ---
 
 Made with 💙💗 by Evelyne
